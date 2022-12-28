@@ -8,7 +8,17 @@ class Road:
             self.direction = direction
             self.color_street = (0, 0, 0)
             self.map = map
+            self.points = set()
+            self.get_points()
             
+        def get_points(self):
+            if self.direction == "horizontal":
+                for i in range(640):
+                    self.points.add((i, self.start))
+            elif self.direction == "vertical":
+                for i in range(640):
+                    self.points.add((self.start, i))
+
         def draw(self, surface):
             if self.direction == "horizontal":
                 # Draw the road in the specified color
